@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './pokemons.css',
 })
 export class Pokemons {
+  unaCadenaDeCaracteres = "Una variable a mostrar";
+  unNumero = 42;
+  unObjeto = { apellido: "Wayne", nombre: "Bruce", ciudad: "Gotham"};
 
-}
+  constructor() {}
+
+  onInit() {
+    console.log('Componente Pokemons cargado');
+  }
+} 
