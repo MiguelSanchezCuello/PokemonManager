@@ -10,6 +10,8 @@ import { Pokemon } from '../pokemon/pokemon';
 })
 export class Pokemons implements OnInit {
   
+  pokemonSeleccionado: any;
+
   pokemons = [
     { 'id': 1, 'nombre': 'Bulbasaur', 'img': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png', 'categoria': 'semilla', 'tipo': ['planta', 'veneno'], 'talla': 0.70, 'peso': 6.9 },
     { 'id': 2, 'nombre': 'Ivysaur', 'img': 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png', 'categoria': 'semilla', 'tipo': ['planta', 'veneno'], 'talla': 1.00, 'peso': 13.0 },
