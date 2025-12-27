@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Pokemon } from '../pokemon/pokemon';
 
 @Component({
   selector: 'app-pokemons',
-  imports: [CommonModule],
+  imports: [CommonModule, Pokemon],
   templateUrl: './pokemons.html',
   styleUrl: './pokemons.css',
 })
