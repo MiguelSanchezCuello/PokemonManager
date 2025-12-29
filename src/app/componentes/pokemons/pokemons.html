@@ -7,6 +7,33 @@
             <p *ngIf="pokemonSeleccionado">El pokemon seleccionado es: {{ pokemonSeleccionado.nombre }}</p>
         </div>
     </div>
+    <div class="columns">
+        <div class="column is-two-thirds">
+            <form>
+                <div class="field has-addons">
+                    <div class="control has-icons-left">
+                        <input class="input is-small" name="pokemonBusca" type="text" placeholder="Nombre del Pokemon"
+                            [(ngModel)]="formBuscarPokemon.nombre" (keyup)="buscar(formBuscarPokemon.nombre)" />
+                        <span class="icon is-small is-left">
+                            <fa-icon [icon]="faOptinMonster"></fa-icon>
+                        </span>
+                    </div>
+                    <div class="control">
+                        <a class="button is-primary is-small" (click)="buscar(formBuscarPokemon.nombre)">
+                            Buscar
+                        </a>
+                    </div>
+                    <div class="control">
+                        <a class="button is-light is-small" (click)="cancelarBuscar()">
+                            Cancelar
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>  
+    <div *ngIf="pokemons?.length<1">Ningun Pokemon encontrado</div>
+
     <div class="columns is-multiline">
         <ul class="menu-list column is-one-third" *ngFor="let pokemon of pokemons">
             <li>

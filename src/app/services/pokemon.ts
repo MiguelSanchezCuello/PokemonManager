@@ -22,4 +22,9 @@ export class Pokemon {
   contandoPokemons() {
     return this.pokemons.length;
   }
+
+  buscarPokemon(nombreDelPokemon: string) {
+    let regex = new RegExp(nombreDelPokemon, 'gi');
+    return this.pokemons.filter(pokemon => pokemon.nombre.match(regex));
+  }
 }
