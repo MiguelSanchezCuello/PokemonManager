@@ -22,6 +22,7 @@ export class Pokemons implements OnInit {
   cuenta = 0;
   faOptinMonster = faOptinMonster;
   formBuscarPokemon: FormBuscarPokemon = new FormBuscarPokemon('');
+  easterEggs = false;
 
   constructor(private servicePokemons: PokemonService) {}
 
@@ -32,6 +33,10 @@ export class Pokemons implements OnInit {
 
   buscar(nombreDelPokemon: string){
     this.pokemons = this.servicePokemons.buscarPokemon(nombreDelPokemon);
+    this.easterEggs = false;
+    if(nombreDelPokemon == 'C3PO'){
+      this.easterEggs = true;
+    }
   }
 
   cancelarBuscar(){
