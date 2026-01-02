@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Pokemon as PokemonService } from '../../services/pokemon';
 
 @Component({
   selector: 'app-generaciones',
@@ -9,19 +10,15 @@ import { CommonModule } from '@angular/common';
 })
 
 export class Generaciones implements OnInit {
-  generaciones = [
-    "Generacion I",
-    "Generacion II",
-    "Generacion III",
-    "Generacion IV",
-    "Generacion V",
-    "Generacion VI",
-    "Generacion VII",
-  ]
+  generaciones = [];
+  numeroDeGeneraciones: number;
 
-  constructor() {}
+  constructor(private servicePokemons: PokemonService) {}
 
   ngOnInit() {
-    console.log('Componente Generaciones cargado');
+    this.servicePokemons.getGeneraciones().subscribe(resultado => {
+      this.generaciones = resultado.results;
+      this.numeroDeGeneraciones = resultado.count;
+    });
   }
 }

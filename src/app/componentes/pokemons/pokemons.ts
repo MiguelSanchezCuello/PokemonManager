@@ -27,20 +27,22 @@ export class Pokemons implements OnInit {
   constructor(private servicePokemons: PokemonService) {}
 
   ngOnInit() {
-    this.pokemons = this.servicePokemons.getPokemons();
-    this.cuenta = this.servicePokemons.contandoPokemons();
+    this.servicePokemons.getPokemons().subscribe(resultado => {
+      this.pokemons = resultado.results;
+      this.cuenta = resultado.count;
+    });
   }
 
-  buscar(nombreDelPokemon: string){
-    this.pokemons = this.servicePokemons.buscarPokemon(nombreDelPokemon);
-    this.easterEggs = false;
-    if(nombreDelPokemon == 'C3PO'){
-      this.easterEggs = true;
-    }
-  }
+  // buscar(nombreDelPokemon: string){
+  //   this.pokemons = this.servicePokemons.buscarPokemon(nombreDelPokemon);
+  //   this.easterEggs = false;
+  //   if(nombreDelPokemon == 'C3PO'){
+  //     this.easterEggs = true;
+  //   }
+  // }
 
   cancelarBuscar(){
-    this.pokemons = this.servicePokemons.getPokemons();
+    this.servicePokemons.getPokemons().subscribe(resultado =>this.pokemons = resultado.results);
     this.formBuscarPokemon.setNombre('');
   }
 } 

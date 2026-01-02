@@ -4,48 +4,16 @@
     <div class="columns">
         <div class="column">
             <p>{{cuenta}} Pokemons en la base de datos. </p>
-            <p *ngIf="pokemonSeleccionado">El pokemon seleccionado es: {{ pokemonSeleccionado.nombre }}</p>
+            <p *ngIf="pokemonSeleccionado">El pokemon seleccionado es: {{ pokemonSeleccionado.name | titlecase }}</p>
         </div>
     </div>
-    <div class="columns">
-        <div class="column is-two-thirds">
-            <form #form="ngForm">
-                <div class="field has-addons">
-                    <div class="control has-icons-left">
-                        <input class="input is-small" name="pokemonBusca" type="text" placeholder="Nombre del Pokemon"
-                            [(ngModel)]="formBuscarPokemon.nombre" (keyup)="buscar(formBuscarPokemon.nombre)" 
-                            pattern="[a-zA-Z 3]*" [class.is-danger]="form.invalid" />
-                        <span class="icon is-small is-left">
-                            <fa-icon [icon]="faOptinMonster"></fa-icon>
-                        </span>
-                        <div *ngIf="form.invalid" class="tag is-danger is-light">
-                            Solo se permiten letras
-                        </div>
-                        <div *ngIf="easterEggs"><img src="https://media.giphy.com/media/3o7bu1nVSxNQUWMAZasource.gif">
-                        </div>
-                    </div>
-                    <div class="control">
-                        <a class="button is-primary is-small" (click)="buscar(formBuscarPokemon.nombre)"
-                            [class.is-danger]="form.invalid"
-                        >
-                            Buscar
-                        </a>
-                    </div>
-                    <div class="control">
-                        <a class="button is-light is-small" (click)="cancelarBuscar()">
-                            Cancelar
-                        </a>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>  
+    
     <div *ngIf="pokemons?.length<1">Ningun Pokemon encontrado</div>
 
     <div class="columns is-multiline">
         <ul class="menu-list column is-one-third" *ngFor="let pokemon of pokemons">
             <li>
-                <app-pokemon [pokemon]=pokemon 
+                <app-pokemon [pokemonInput]=pokemon 
                 (eventoClickImagen)=" pokemonSeleccionado=$event"></app-pokemon>
             </li>
         </ul>
